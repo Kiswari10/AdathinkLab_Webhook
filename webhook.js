@@ -1,21 +1,6 @@
 const request = require("request");
 const url = "http://localhost:3200/webhook"
 
-/* 
-let arrPares = []
-    let arrImpares = []
-    for(let i = iterator; i< limit; i++ ) {
-        if(i %2 === 0){
-            arrPares.push(i)
-        } else {
-            arrImpares.push(i)
-        }
-    }
-    const arrOfNumber = [...arrPares, ...arrImpares]
-    iterator += 20
-    limit += 20;
-    let data ={ arrOfNumber }
-*/
 let limit = 20
 let iterator = 0;
 let condition = false
@@ -51,9 +36,9 @@ setInterval(() => {
         if (error) {
             console.log("no se pudo enviar el mensaje")
         }
-        let mensajes =JSON.parse(body)
-        mensajes.forEach((mensaje) => {
-            console.log(mensaje);
+        let messages =JSON.parse(body)
+        messages.forEach((message) => {
+            console.log(message);
         })
     })
 }, 5000)
