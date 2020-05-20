@@ -6,10 +6,15 @@ const middleware =require("./middleware");
 const { port } = config;
 
 app.use(express.json());
+app.use(middleware.multiply);
 
 app.post("/webhook", (req, res) => {
     const {arrOfNumber} = req.body
-    /* console.log(arrOfNumber) */
+    const { arrMessages } = req.multiply
+    arrMessages.forEach((message) => {
+        console.log({ middleware: message})
+    })
+    console.log("")
     let condition = [];
     let result = [];
     arrOfNumber.forEach((number) => {
@@ -21,7 +26,6 @@ app.post("/webhook", (req, res) => {
         result.push(condition)
         console.log( {Webhook : `{"mensaje":"${number}"}`})
     })
-    /* console.log('result', result) */
     res.json(result)
 })
 
